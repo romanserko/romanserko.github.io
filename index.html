@@ -37,6 +37,15 @@ function send()
 }
 </script>
 
+<!-- ---------- годинник --------- -->
+
+<script>
+     window.onload = function(){
+     setInterval(clockPainting, 1000);}
+</script>
+
+<script src="js/clock1.js"></script>
+
 <!--  ==================================================================  -->
 
 
@@ -85,7 +94,11 @@ function send()
 <!-- --- меню зліва --- -->
 <tr>
   <td width="30%" valign="top">
-  
+
+  <center><canvas id="canvas" height="120" width="120">
+  </canvas> </center>
+  <hr>
+
    <font size="5" color="navy"> Новини <h2></h2></font> 
    <font size="5"> 
 	 <ul>
