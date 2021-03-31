@@ -153,6 +153,31 @@ function send()
 	echo "<h2 align='center'>Ви ввели :".$_post['name2'].";".$st=$_post['name1'].";".$st=$_post['nicl'].";".$st=$_post['email'].";".$st=$_post['password']."</h2>"
 	?>
   </h1>	
+  
+<!--  20 список зареєестрованих ? уточнити -->
+
+<h1 align="center">Список зареєестрованих</h1>
+  <table align="center" border="1" width="600">
+  <tr>
+  <td align="center"><b>Прізвище</td>
+  <td align="center"><b>Ім'я</td>
+  <td align="center"><b>E-mail</td>
+  <td align="center"><b>Пароль</td>
+  </tr>  
+<?php 
+$data=file("baza.txt");
+foreach($data as $line){
+    $trs=explode(";",$line);	
+             echo'<tr>';
+    echo '<td>'.$trs[0].'</td>';			 
+    
+	echo '<td>'.$trs[1].'</td>';			 
+    echo '<td>'.$trs[2].'</td>';			 
+    echo '<td>'.$trs[3].'</td>';			 
+             echo'<tr>';
+}
+?>  
+  </table>
 </td>
 </tr>
 <!-- --- футер --- -->
