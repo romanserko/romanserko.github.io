@@ -170,6 +170,44 @@ function send()
 <p>Звертайтесь до веб-студії Web-DECO, і ми з радістю застосуємо свої здібності і досвід для вирішення Ваших задач! Ми можемо створити сайт, який стане для Вас вдалою інвестицією.</p>
 </td>
 </tr>
+                   <!-- 23-PHP статистика ?? log1-->
+<?php  
+$log_path = 'log.txt';
+$user_ip = getenv(REMOTE_ADDR);
+$user_brouser = getenv(HTTP_USER_AGENT);
+$curent_time =date("ymd H:i:s");
+$log_string="$user_ip|$user_brouser|curent_time|\r\n";
+
+$file=fopen($log_path,"a");
+fwrite($file,$log_string, strlen($log_string));
+fclose;
+?>
+<!-- log2 -->
+<?php 
+echo '<h1 align="center"> Хто донас на сайт  заходив !</h1>';
+echo '<table align="center" border="1" width ="800"> ';
+                 
+				 echo'<tr>';
+				 
+echo '<td align="center">Ip Adress</td>';
+echo '<td align="center">Браузер</td>';
+echo '<td align="center">Дата</td>';
+                 
+				 echo'<tr>';
+				 
+$data = file("log.txt");
+foreach($data as $line)	{
+	$trs = explode("|",$line);	 
+				 echo'<tr>';
+                    echo '<td>'.$trs[0].'</td>';
+            echo '<td>'.$trs[1].'</td>';
+            echo '<td>'.$trs[2].'</td>';
+              
+			  echo'<tr>';
+				 
+?>
+
+
 <!-- --- футер --- -->
 
 <tr>
