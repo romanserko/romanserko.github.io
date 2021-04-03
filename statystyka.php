@@ -80,11 +80,11 @@ function send()
      <td colspan="2">
 	 <font size="4"> 
 	 <b>
-	 <a href="#"> Головна </a>&nbsp;&nbsp;
- 	 <a href="#"> Фотогалерея </a>&nbsp;&nbsp;
+	 <a href="index.php"> Головна </a>&nbsp;&nbsp;
+ 	 <a href="fotogalereya.php"> Фотогалерея </a>&nbsp;&nbsp;
  	 <a href="#"> Телефони </a>&nbsp;&nbsp;
  	 <a href="#"> Статистика </a>&nbsp;&nbsp;
- 	 <a href="#"> Зареєстровані </a>&nbsp;&nbsp;
+ 	 <a href="zareyestrovany.php"> Зареєстровані </a>&nbsp;&nbsp;
 	 
 	</b>
 	</font>
@@ -140,20 +140,47 @@ function send()
 					</p>
 					</form>
 					<hr>	
-	
+	<td>
+	<!-- ---- текст сайту ---- -->
+                    <!-- 23-PHP статистика ?? log1-->
+<?php  
+$log_path = 'log.txt';
+$user_ip = getenv(REMOTE_ADDR);
+$user_brouser = getenv(HTTP_USER_AGENT);
+$curent_time =date("ymd H:i:s");
+$log_string="$user_ip|$user_brouser|curent_time|\r\n";
+
+$file=fopen($log_path,"a");
+fwrite($file,$log_string, strlen($log_string));
+fclose;
+?>
+<!-- log2 -->
+<?php 
+echo '<h1 align="center"> Хто донас на сайт  заходив !</h1>';
+echo '<table align="center" border="1" width ="800"> ';
+                 
+				 echo'<tr>';
+				 
+echo '<td align="center">Ip Adress</td>';
+echo '<td align="center">Браузер</td>';
+echo '<td align="center">Дата</td>';
+                 
+				 echo'<tr>';
+				 
+$data = file("log.txt");
+foreach($data as $line)	{
+	$trs = explode("|",$line);	 
+				 echo'<tr>';
+                    echo '<td>'.$trs[0].'</td>';
+            echo '<td>'.$trs[1].'</td>';
+            echo '<td>'.$trs[2].'</td>';
+              
+			  echo'<tr>';
+				 
+?>
+</table>
     </td>
- <!-- ---- текст сайту ---- -->
-  <td width="70%" > 
-  
-  <h1 align="center"> Дякуємо за реєстрацію 
-    <?php  
-	$st=$_post['name2'].";".$st=$_post['name1'].";".$st=$_post['nicl'].";".$st=$_post['email'].";".$st=$_post['password']."\n";
-	$fp = fopen("baza.txt","a");
-	$test = fwrite($fp,$st);
-	echo "<h2 align='center'>Ви ввели :".$_post['name2'].";".$st=$_post['name1'].";".$st=$_post['nicl'].";".$st=$_post['email'].";".$st=$_post['password']."</h2>"
-	?>
-  </h1>	
-  
+ 
 </td>
 </tr>
 <!-- --- футер --- -->

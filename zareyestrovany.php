@@ -80,10 +80,10 @@ function send()
      <td colspan="2">
 	 <font size="4"> 
 	 <b>
-	 <a href="#"> Головна </a>&nbsp;&nbsp;
- 	 <a href="#"> Фотогалерея </a>&nbsp;&nbsp;
+	 <a href="index.php"> Головна </a>&nbsp;&nbsp;
+ 	 <a href="fotogalereya.php"> Фотогалерея </a>&nbsp;&nbsp;
  	 <a href="#"> Телефони </a>&nbsp;&nbsp;
- 	 <a href="#"> Статистика </a>&nbsp;&nbsp;
+ 	 <a href="statystyka.php"> Статистика </a>&nbsp;&nbsp;
  	 <a href="#"> Зареєстровані </a>&nbsp;&nbsp;
 	 
 	</b>
@@ -110,52 +110,34 @@ function send()
  	 	 <p align="right"><a href="#"> Інші ...</a></p>
 	 </ul>
 	</font>
-
-<!-- ------ форма реєестрації ---- -->
-
-<hr>
-					<h1 align="center"><font color="green">Реєстрація</font></h1>
-					<form action="forma.php" method="post" onsubmit="return send();">
-					<table align="center" bgcolor="#ccc">
-						<tr>
-							<td><font color="green">Прізвище</font>: </td>
-							<td><input type="text" size="10" maxlength="20" name="name2"> </td>
-						</tr>
-						<tr>
-							<td><font color="green">Ім'я</font>: </td>
-							<td><input type="text" size="10" maxlength="20" name="name1"></td>
-						</tr>
-						<tr>
-							<td><font color="green">E-Mail</font>: </td>
-							<td><input type="password" size="10" maxlength="20" name="email"></td>
-						</tr>
-						<tr>
-							<td><font color="green">Пароль</font>: </td>
-							<td><input type="password" size="10" maxlength="20" name="password"></td>
-						</tr>
-					</table>
-					<p align="center">
-						<input type="submit" value="Зареєсруватись">
-						<input type="reset" value="Очистити">
-					</p>
-					</form>
-					<hr>	
 	
-    </td>
- <!-- ---- текст сайту ---- -->
-  <td width="70%" > 
+	<!--  20 список зареєестрованих ? уточнити -->
+<td>
+<h1 align="center">Список зареєстрованих !</h1>
+  <table align="center" border="1" width="600">
+  <tr>
+  <td align="center"><b>Прізвище</td>
+  <td align="center"><b>Ім'я</td>
+  <td align="center"><b>E-mail</td>
+  <td align="center"><b>Пароль</td>
+  </tr> 
   
-  <h1 align="center"> Дякуємо за реєстрацію 
-    <?php  
-	$st=$_post['name2'].";".$st=$_post['name1'].";".$st=$_post['nicl'].";".$st=$_post['email'].";".$st=$_post['password']."\n";
-	$fp = fopen("baza.txt","a");
-	$test = fwrite($fp,$st);
-	echo "<h2 align='center'>Ви ввели :".$_post['name2'].";".$st=$_post['name1'].";".$st=$_post['nicl'].";".$st=$_post['email'].";".$st=$_post['password']."</h2>"
-	?>
-  </h1>	
-  
-</td>
+<?php 
+$data=file("baza.txt");
+foreach($data as $line){
+    $trs=explode(";",$line);	
+             echo'<tr>';
+    echo '<td>'.$trs[0].'</td>';			 
+    echo '<td>'.$trs[1].'</td>';			 
+    echo '<td>'.$trs[2].'</td>';			 
+    echo '<td>'.$trs[3].'</td>';			 
+             echo'<tr>'; } ?>  
+  </table>';
 </tr>
+  
+
+</td>
+
 <!-- --- футер --- -->
 
 <tr>
