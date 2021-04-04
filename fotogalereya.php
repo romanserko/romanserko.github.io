@@ -85,7 +85,7 @@ function send()
 	 <b>
 	 <a href="index.php"> Головна </a>&nbsp;&nbsp;
  	 <a href="fotogalereya.php"> Фотогалерея </a>&nbsp;&nbsp;
- 	 <a href="#"> Телефони </a>&nbsp;&nbsp;
+ 	 <a href="telefony.php"> Телефони </a>&nbsp;&nbsp;
  	 <a href="statystyka.php"> Статистика </a>&nbsp;&nbsp;
  	 <a href="zareyestrovany.php"> Зареєстровані </a>&nbsp;&nbsp;
 	 

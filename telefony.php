@@ -82,7 +82,7 @@ function send()
 	 <b>
 	 <a href="index.php"> Головна </a>&nbsp;&nbsp;
  	 <a href="fotogalereya.php"> Фотогалерея </a>&nbsp;&nbsp;
- 	 <a href="telefony.php"> Телефони </a>&nbsp;&nbsp;
+ 	 <a href="#"> Телефони </a>&nbsp;&nbsp;
  	 <a href="#"> Статистика </a>&nbsp;&nbsp;
  	 <a href="zareyestrovany.php"> Зареєстровані </a>&nbsp;&nbsp;
 	 
@@ -142,48 +142,99 @@ function send()
 					<hr>	
 	<td>
 	<!-- ---- текст сайту ---- -->
-                    <!-- 23-PHP статистика ?? log1-->
-<?php  
-$log_path = 'log.txt';
-$user_ip = getenv(REMOTE_ADDR);
-$user_brouser = getenv(HTTP_USER_AGENT);
-$curent_time =date("ymd H:i:s");
-$log_string="$user_ip|$user_brouser|curent_time|\r\n";
-
-$file=fopen($log_path,"a");
-fwrite($file,$log_string, strlen($log_string));
-fclose($file);
-?>
-<!-- log2 -->
 <?php 
-echo '<h1 align="center"> Хто донас на сайт  заходив !</h1>';
-echo '<table align="center" border="1" width ="800"> ';
-                 
-				 echo'<tr>';
-				 
-echo '<td align="center">Ip Adress</td>';
-echo '<td align="center">Браузер</td>';
-echo '<td align="center">Дата</td>';
-                 
-				 echo'<tr>';
-				 
-$data = file("log.txt");
-foreach($data as $line)	{
-	$trs = explode("|",$line);	 
-				 echo'<tr>';
-                    echo '<td>'.$trs[0].'</td>';
-            echo '<td>'.$trs[1].'</td>';
-            echo '<td>'.$trs[2].'</td>';
-              
-			  echo'<tr>';
-}
-echo '</table>';
-				 
+if(!$db_conn):
+     echo "<strong>";
+     echo "База тимчасово не працює.<br>";
+     echo "<hr><strong>";
+else:
+$result = mysqli_query($db_conn,$rez) or die ("Query failed");
+$num = mysqli_num_rows($result);
+endif;
+$i-0;
+$s="";
+echo "<option VALUE=''>";
+  while($line=mysql_fetch_array($rusult,MYSQULI_NUM)){
+	 $n=$line[0]; 
+	 $s=$line[1]; 
+	echo "<option VALUE='$n'>".$s;
+$i++;	
+  }
 ?>
+           <!-- tel09 -->
+
+<TABLE cellPadding=0 cellSpacing=0 align="center">
+<TR>
+<TD align=center height=80 vAlign=center width=365><FONT color=navy size=+3><B>Телефонний довідник міста Рівне.</B></TD>
+</TR>
+<TR>
+<TD width=470><CENTER>
+<FORM METHOD=POST ACTION=rez.php>
+<table CELLSPACING=0 CELLPADDING=0>
+
+<tr>
+<td>
+  <B>Номер тел.: &nbsp;&nbsp;&nbsp;</B>
+</td>
+<td>
+    <INPUT TYPE="text" NAME="ntel" SIZE=9  VALUE="">
+</td>
+</tr>
+<tr>
+<td><B>Прізвище:&nbsp;&nbsp;&nbsp;</B></td>
+    <td><INPUT TYPE="text" NAME="fio" SIZE=19 VALUE=""></td>
+</tr>
+<tr>
+
+<td><B>Вулиця :&nbsp;&nbsp;&nbsp;</B></td>
+    <td><select NAME="street" >
+
+<!-- street.png = -->
+
+<?php 
+if(!$db_conn):
+     echo "<strong>";
+     echo "База тимчасово не працює.<br>";
+     echo "<hr><strong>";
+else:
+$result = mysqli_query($db_conn,$rez) or die ("Query failed");
+$num = mysqli_num_rows($result);
+endif;
+$i-0;
+$s="";
+echo "<option VALUE=''>";
+  while($line=mysql_fetch_array($rusult,MYSQULI_NUM)){
+	 $n=$line[0]; 
+	 $s=$line[1]; 
+	echo "<option VALUE='$n'>".$s;
+$i++;	
+  }
+?>
+
+<!-- // ----- -->
+
+     </select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     </td>
+</tr>
+<tr>
+
+<td><B>Будинок :&nbsp;&nbsp;&nbsp; </B></td>
+<td><INPUT TYPE="text" NAME="ndom" SIZE=6 VALUE=""></td>
+  </tr>
+</table>
+
+<br><INPUT TYPE="submit" Name="sub1" Value ="Пошук">&nbsp;&nbsp;&nbsp;&nbsp;    
+      </CENTER>
+</FORM> &nbsp; 
+</td></tr>
+</table>
+
     </td>
  
 </td>
 </tr>
+
+
 <!-- --- футер --- -->
 
 <tr>
