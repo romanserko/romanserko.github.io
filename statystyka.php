@@ -152,7 +152,7 @@ $log_string="$user_ip|$user_brouser|curent_time|\r\n";
 
 $file=fopen($log_path,"a");
 fwrite($file,$log_string, strlen($log_string));
-fclose;
+fclose($file);
 ?>
 <!-- log2 -->
 <?php 
@@ -176,9 +176,10 @@ foreach($data as $line)	{
             echo '<td>'.$trs[2].'</td>';
               
 			  echo'<tr>';
+}
+echo '</table>';
 				 
 ?>
-</table>
     </td>
  
 </td>
@@ -193,8 +194,6 @@ foreach($data as $line)	{
 
 </table>
 <!-- ==================================================-->
-
-
 
 </body>
 

@@ -163,7 +163,7 @@ $files = excess($files);
  ?> 
 <?php for ($i=0;$i<count($files);$i++){ ?>
 
-<!-- !!!! php не працюэ -->
+<!-- !!!! php не працює -->
 <img src="<?=$dir."/".$files[$i]?>" alt="" width= "350"
 height = "250" hspace="5" vspace="7" border="5" onclick="this.classList.toggle('big')" />
 <?php if (($i+1)%4==0){ ?><br /><?php } ?> 
