@@ -203,7 +203,7 @@ endif;
 $i-0;
 $s="";
 echo "<option VALUE=''>";
-  while($line=mysql_fetch_array($rusult,MYSQULI_NUM)){
+  while($line=mysqli_fetch_array($rusult,MYSQULI_NUM)){
 	 $n=$line[0]; 
 	 $s=$line[1]; 
 	echo "<option VALUE='$n'>".$s;
