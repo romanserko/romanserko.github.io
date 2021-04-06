@@ -253,13 +253,12 @@ $i++;
 
 <?php
 $db_conn = mysqli_connect ("localhost", "user", "1", "tel09");
-mysqli_set_charset ($db_conn, ‘utf8');
-Sdate = Date('m/d/Y");
-Srez = "SELECT * FROM street";
+mysqli_set_charset($db_conn,'utf8');
+      $date=Date('m/d/Y');
+$rez = "SELECT * FROM street";
 if (!$db_conn) :
 echo "<strong>";
-
- echo "База даних тимчасово не працює. <br>
+echo "База даних тимчасово не працює. <br>";
 echo "<hr></strong>";
 else: $result = mysqli_query($db_conn,$rez) or die("Query failedi");
       $num = mysqli_num_rows ($result) ;
@@ -267,8 +266,8 @@ else: $result = mysqli_query($db_conn,$rez) or die("Query failedi");
 endif;
 $i = 0; $s="";
 echo "<option VALUE=''>";
-    while($line = mysqli_fetch array ($result, MYSQLI_NUM)) {
-$n = $1ine[0];
+    while($line = mysqli_fetch_array ($result, MYSQLI_NUM)){
+$n = $line[0];
 $s = $line[1];
 echo "<option VALUE='§n'>".$s;
 	$i++;}
@@ -294,14 +293,14 @@ $rez = "SELECT * FROM tel09 WHERE ";
 $stre = "SELECT * FROM street WHERE";
 $rl = 0; $num = 0;
 $ntel = $_POST['ntel'];
-$£i0 = $ POST['fio'];
+$fio = $_POST['fio'];
 $street = $_POST['street'];
 $ndom = $_POST['ndom'];
 
 if ($fi0 != ""):
    $fio = strtoupper($fio);
    $x = 1;
-   $rez = "$rez a_name LIKE '§fio%'";
+   $rez = "$rez a_name LIKE '$fio%'";
 endif; 
 
 if (Sstreet != 0):
@@ -314,13 +313,13 @@ endif;
 
 if ($ndom!=""):
    if ($r1 == 1):
-   §rez = "$rez AND";
+   $rez = "$rez AND";
 endif;
   $rl=1;
-  $rez =" $rez house LIKE '$ndom$'";
+  $rez =" $rez house LIKE '$ndom%'";
 endif;
 
-if ($ntel != ""}:
+if ($ntel != ""):
     $ntel = str_replace("-", "", $ntel);
     if ($r1 = 1):
     $rez = "$rez AND";
@@ -358,17 +357,15 @@ endif;
 <!-- 4 -->
 
 <?php
-if (!$qb_conn)
+if (!$db_conn):
 echo "<strong>";
-echo "База даних тимчасово не працює.<br>";echo "<hr><.strong>";
-
+echo "База даних тимчасово не працює.<br>";echo "<hr></strong>";
 else:
-
-if ($rl == 1):
+  if ($rl == 1):
   $result = mysqli_query($db_conn,$rez) or die ("Query failed");
   $num = mysgli_num_rows ($result);
+ endif;
 endif;
-
 $i = 0;
 
 if ($num == 0 OR $r1 == 0){
@@ -393,13 +390,13 @@ echo "<th><b><font size=+1 color=#006600>Прізвище</font></b></th>";
 echo "<th><b><font size=+1 color=#006600>Телефон</font></b></th>";
 echo "<th><b><font size=+1 color=#006600>Адреса</font></b></th>";
 
- while (Sline = mysqli_fetch_array($result, MYSQLI_NUM)){
-echo "<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;".$line [1]?
+ while ($line = mysqli_fetch_array($result, MYSQLI_NUM)){
+echo "<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;".$line [1];
 echo "</b></td><td><b>&nbsp;&nbsp;&nbsp;&nbsp;".$line [0];
 
 $stl="SELECT * FROM street WHERE n_street=".$line[2];
-Sres_st = mysqli_query($db_conn,$stl) or die("Query failed");
-Slst = mysqli_fetch_array ($res_st, MYSQLI_NUM);
+$res_st = mysqli_query($db_conn,$stl) or die("Query failed");
+$lst = mysqli_fetch_array ($res_st, MYSQLI_NUM);
 echo "</b></td><td><b>&nbsp;&nbsp;&nbsp;&nbsp;".$lst [1]."&nbsp;&nbsp;буд.".$line[3]."кв. ".$line[4];}
 echo "</b></td></tz></table></CENTER>";
 ?>
