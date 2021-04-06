@@ -83,7 +83,7 @@ function send()
 	 <a href="index.php"> Головна </a>&nbsp;&nbsp;
  	 <a href="fotogalereya.php"> Фотогалерея </a>&nbsp;&nbsp;
  	 <a href="#"> Телефони </a>&nbsp;&nbsp;
- 	 <a href="statystyka.php"> Статистика </a>&nbsp;&nbsp;
+ 	 <a href="#"> Статистика </a>&nbsp;&nbsp;
  	 <a href="zareyestrovany.php"> Зареєстровані </a>&nbsp;&nbsp;
 	 
 	</b>
@@ -203,7 +203,7 @@ endif;
 $i-0;
 $s="";
 echo "<option VALUE=''>";
-  while($line=mysqli_fetch_array($rusult,MYSQULI_NUM)){
+  while($line=mysqli_fetch_array($result,MYSQULI_NUM)){
 	 $n=$line[0]; 
 	 $s=$line[1]; 
 	echo "<option VALUE='$n'>".$s;
@@ -303,7 +303,7 @@ if ($fi0 != ""):
    $rez = "$rez a_name LIKE '$fio%'";
 endif; 
 
-if (Sstreet != 0):
+if ($street != 0):
    if ($rl == 1):
    $rez = "$rez AND";
 endif;
