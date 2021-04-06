@@ -142,7 +142,7 @@ function send()
 					<hr>	
 	<td>
 	<!-- ---- текст сайту ---- -->
-<?php 
+<?php /*
 if(!$db_conn):
      echo "<strong>";
      echo "База тимчасово не працює.<br>";
@@ -159,7 +159,7 @@ echo "<option VALUE=''>";
 	 $s=$line[1]; 
 	echo "<option VALUE='$n'>".$s;
 $i++;	
-  }
+  }*/
 ?>
            <!-- tel09 -->
 
@@ -234,6 +234,178 @@ $i++;
 </td>
 </tr>
 
+
+
+<!-- 26 -->
+
+<!-- 1 -->
+<FORM METHOD=FOST ACTION=tel0S.php> <table> <tr><td>
+
+<B>Номер тел. :&nbsp;&nbsp;&nbsp;</B> </td><td>
+
+<INPUT TYPE="text" NAME="ntel" SIZE=9 VALUE=""> </td></tr><tr><td>
+<S>Прізвище :&nbsp;&nbsp;&nbsp;</B> — </td><td>
+
+<INPUT TYPE="text" NAME="fio" SIZE=19  VALUE=""> </td></tr><tr>ctd>
+
+<B>Bулиця: &nbsp;&nbsp;&nbsp;</B> </td><td>
+<select NAME="street" >
+
+<?php
+$db_conn = mysqli_connect ("localhost", "user", "1", "tel09");
+mysqli_set_charset ($db_conn, ‘utf8');
+Sdate = Date('m/d/Y");
+Srez = "SELECT * FROM street";
+if (!$db_conn) :
+echo "<strong>";
+
+ echo "База даних тимчасово не працює. <br>
+echo "<hr></strong>";
+else: $result = mysqli_query($db_conn,$rez) or die("Query failedi");
+      $num = mysqli_num_rows ($result) ;
+
+endif;
+$i = 0; $s="";
+echo "<option VALUE=''>";
+    while($line = mysqli_fetch array ($result, MYSQLI_NUM)) {
+$n = $1ine[0];
+$s = $line[1];
+echo "<option VALUE='§n'>".$s;
+	$i++;}
+?>
+
+</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td></tr><tr><td>
+
+<B>Будинок :&nbsp;&nbsp;&nbsp;</B></td><td>
+<INPUT TYPE="text" NAME="ndom" SIZE=6  VALUE=""></td></tr></table>
+<br><INPUT TYPE="submit" Name="subi" Value ="Пошук">&nbsp;&nbsp;&nbsp;&nbsp;
+</FORM>&nbsp;
+<hr>
+
+<!-- 2 -->
+
+<?php
+
+$db_conn = mysqli_connect ("localhost", "user", "1", "tel09");
+mysqli_set_charset ($db_conn, 'utf8');
+
+$rez = "SELECT * FROM tel09 WHERE ";
+$stre = "SELECT * FROM street WHERE";
+$rl = 0; $num = 0;
+$ntel = $_POST['ntel'];
+$£i0 = $ POST['fio'];
+$street = $_POST['street'];
+$ndom = $_POST['ndom'];
+
+if ($fi0 != ""):
+   $fio = strtoupper($fio);
+   $x = 1;
+   $rez = "$rez a_name LIKE '§fio%'";
+endif; 
+
+if (Sstreet != 0):
+   if ($rl == 1):
+   $rez = "$rez AND";
+endif;
+      $rl = 1;
+      $rez = " $rez street = $street";
+endif;
+
+if ($ndom!=""):
+   if ($r1 == 1):
+   §rez = "$rez AND";
+endif;
+  $rl=1;
+  $rez =" $rez house LIKE '$ndom$'";
+endif;
+
+if ($ntel != ""}:
+    $ntel = str_replace("-", "", $ntel);
+    if ($r1 = 1):
+    $rez = "$rez AND";
+endif;
+
+$rl=1;
+$rez = " $rez phone LIKE '%$ntel%'";
+
+endif;
+?>
+
+<!-- 3 -->
+
+<TABLE align=center border=0 cellPadding=0 cellspacing=0>
+<TBODY>
+ <TR>
+    <TD>
+
+<TABLE border=0 cellPadding=0 cellSpacing=0 WIDTH="100%">
+<TBODY>
+<TR>
+<TD align="middle" height=52 width=600>
+<B><I><FONT FACE="Arial" Size=+2>
+
+телефонний довідник міста Рівне.</FONT></I></B>
+
+</TD></TR></TBODY></TABLE>
+
+</TD></TR></TBODY></TABLE>
+
+| <CENTER><B><FONT SIZE=+1>
+Результат пошуку телефону &nbsp;&nbsp;:&nbsp;&nbsp; <?echo "Sntel"?></FONT></B></CENTER>
+
+
+<!-- 4 -->
+
+<?php
+if (!$qb_conn)
+echo "<strong>";
+echo "База даних тимчасово не працює.<br>";echo "<hr><.strong>";
+
+else:
+
+if ($rl == 1):
+  $result = mysqli_query($db_conn,$rez) or die ("Query failed");
+  $num = mysgli_num_rows ($result);
+endif;
+
+$i = 0;
+
+if ($num == 0 OR $r1 == 0){
+echo "<hr><center><strong>";
+echo "книга не містить жодного запису.<br>";
+echo "</strong></center>";
+} else {
+
+$i = 0;
+  if ($num > 500){ $num = 500;
+echo "<hr><center><strong>";
+echo "ви невірно вказали дагі для запиту.<br>";
+echo "Кількість записів перевищує 500.<br>";
+echo "</strong></center>";}
+ else {
+      echo "<hr><center><strong>";
+      echo "Знайдено $num записів.<br>";
+      echo "</strong></center>";} }
+	  
+echo "<CENTER><table border=3 color=red><tr>";
+echo "<th><b><font size=+1 color=#006600>Прізвище</font></b></th>";
+echo "<th><b><font size=+1 color=#006600>Телефон</font></b></th>";
+echo "<th><b><font size=+1 color=#006600>Адреса</font></b></th>";
+
+ while (Sline = mysqli_fetch_array($result, MYSQLI_NUM)){
+echo "<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;".$line [1]?
+echo "</b></td><td><b>&nbsp;&nbsp;&nbsp;&nbsp;".$line [0];
+
+$stl="SELECT * FROM street WHERE n_street=".$line[2];
+Sres_st = mysqli_query($db_conn,$stl) or die("Query failed");
+Slst = mysqli_fetch_array ($res_st, MYSQLI_NUM);
+echo "</b></td><td><b>&nbsp;&nbsp;&nbsp;&nbsp;".$lst [1]."&nbsp;&nbsp;буд.".$line[3]."кв. ".$line[4];}
+echo "</b></td></tz></table></CENTER>";
+?>
+
+
+<!-- ----------------- -->
 
 <!-- --- футер --- -->
 
