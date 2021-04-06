@@ -238,7 +238,9 @@ $i++;
 
 <!-- 26 -->
 
-<!-- 1 -->
+<!-- 1  МОЖЕ ЦЕ ЗАЙВЕ
+
+
 <FORM METHOD=FOST ACTION=tel0S.php> <table> <tr><td>
 
 <B>Номер тел. :&nbsp;&nbsp;&nbsp;</B> </td><td>
@@ -250,8 +252,8 @@ $i++;
 
 <B>Bулиця: &nbsp;&nbsp;&nbsp;</B> </td><td>
 <select NAME="street" >
-
-<?php
+-->
+<?php/*
 $db_conn = mysqli_connect ("localhost", "user", "1", "tel09");
 mysqli_set_charset($db_conn,'utf8');
       $date=Date('m/d/Y');
@@ -270,9 +272,9 @@ echo "<option VALUE=''>";
 $n = $line[0];
 $s = $line[1];
 echo "<option VALUE='§n'>".$s;
-	$i++;}
+	$i++;} */
 ?>
-
+<!--
 </select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </td></tr><tr><td>
 
@@ -281,6 +283,8 @@ echo "<option VALUE='§n'>".$s;
 <br><INPUT TYPE="submit" Name="subi" Value ="Пошук">&nbsp;&nbsp;&nbsp;&nbsp;
 </FORM>&nbsp;
 <hr>
+-->
+
 
 <!-- 2 -->
 
