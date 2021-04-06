@@ -129,8 +129,8 @@ foreach($data as $line){
              echo'<tr>';
     echo '<td>'.$trs[0].'</td>';			 
     echo '<td>'.$trs[1].'</td>';			 
-    echo '<td>'.$trs[2].'</td>';			 
     echo '<td>'.$trs[3].'</td>';			 
+    echo '<td>'.$trs[2].'</td>';			 
              echo'<tr>'; } ?>  
   </table>';
 </tr>

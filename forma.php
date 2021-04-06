@@ -147,10 +147,10 @@ function send()
   
   <h1 align="center"> Дякуємо за реєстрацію </h1>	
     <?php  
-	$st=$_post['name2'].";".$st=$_post['name1'].";".$st=$_post['nicl'].";".$st=$_post['email'].";".$st=$_post['password']."\n";
+	$st=$_POST['name2'].";".$_POST['name1'].";".$_POST['nicl'].";".$_POST['email'].";".$_post['password']."\n";
 	$fp = fopen("baza.txt","a");
 	$test = fwrite($fp,$st);
-	echo "<h2 align='center'>Ви ввели :".$_post['name2'].";".$st=$_post['name1'].";".$st=$_post['nicl'].";".$st=$_post['email'].";".$st=$_post['password']."</h2>"
+	echo "<h2 align='center'>Ви ввели :".$_POST['name2'].", ".$_POST['name1'].", ".$_POST['nicl'].", ".$_POST['email'].", ".$_POST['password']."</h2>";
 	?>
   
 </td>
