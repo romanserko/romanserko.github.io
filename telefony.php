@@ -355,7 +355,7 @@ endif;
 </TD></TR></TBODY></TABLE>
 
 | <CENTER><B><FONT SIZE=+1>
-Результат пошуку телефону &nbsp;&nbsp;:&nbsp;&nbsp; <?echo "Sntel"?></FONT></B></CENTER>
+Результат пошуку телефону &nbsp;&nbsp;:&nbsp;&nbsp; <?echo "$ntel"?></FONT></B></CENTER>
 
 
 <!-- 4 -->
